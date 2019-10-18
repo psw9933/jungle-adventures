@@ -1,0 +1,89 @@
+{
+  "__type__": "cc.SpriteAtlas",
+  "_name": "images.plist",
+  "_objFlags": 0,
+  "_native": "",
+  "_spriteFrames": {
+    "Default-Particle": {
+      "__uuid__": "a0aac092-d5f8-4931-a87b-bed04785f8d2"
+    },
+    "SHOP copy_1": {
+      "__uuid__": "942ca53d-dcf1-4c65-b06c-c05891aa61f4"
+    },
+    "SpriteAtlasTexture-Contra_UI (Group 0)-2048x1024-fmt47_17": {
+      "__uuid__": "adad4266-d83b-4906-9135-4fb2bdb5a90b"
+    },
+    "SpriteAtlasTexture-Contra_UI (Group 0)-2048x2048-fmt47_02": {
+      "__uuid__": "91ed702a-5197-4cc9-b2ce-1b72052c91cb"
+    },
+    "SpriteAtlasTexture-UI (Group 0)-2048x2048-fmt4_23": {
+      "__uuid__": "954ad4a2-6bcc-4827-be22-aa2d9a6b25da"
+    },
+    "btn2": {
+      "__uuid__": "0f61c5cf-e9a1-4934-a5a9-f9f465f97f67"
+    },
+    "btnBg": {
+      "__uuid__": "713d42a0-e263-4634-9f78-6d02ee22c385"
+    },
+    "btn_back": {
+      "__uuid__": "205d3086-d438-4e8a-a5bc-6608c71ef4a0"
+    },
+    "bullet_main3": {
+      "__uuid__": "3f6b2b48-fab8-429d-b59d-5b3acdf73e66"
+    },
+    "button_no": {
+      "__uuid__": "6542857d-98cb-484f-a8bf-be6a65b2b9f3"
+    },
+    "button_yes": {
+      "__uuid__": "7cf2ffd1-b04d-46f2-8b42-e51c8b08a699"
+    },
+    "continue": {
+      "__uuid__": "05178811-fbcc-4df0-bb76-b7b25d84b20e"
+    },
+    "crow": {
+      "__uuid__": "90e09625-506f-49e8-a77e-7a5f8d3e9c86"
+    },
+    "editBg": {
+      "__uuid__": "e63fd5b4-310a-4960-b1ce-75ac95f9071f"
+    },
+    "effect_star3": {
+      "__uuid__": "860b700a-264c-4317-a54e-1cd04626fcd4"
+    },
+    "enemy_bullet1": {
+      "__uuid__": "87ab64ed-dcc4-493d-a8cc-54d5a7fc180a"
+    },
+    "enemy_bullet3": {
+      "__uuid__": "374fd950-cafa-429d-b48f-f2430329677d"
+    },
+    "font17_q": {
+      "__uuid__": "0807df52-25d5-42fb-b8d2-42b0b9be75ef"
+    },
+    "icon_credits": {
+      "__uuid__": "cbe75b3b-a7ed-4499-87ac-e44361f7a848"
+    },
+    "icon_rate": {
+      "__uuid__": "5d2a8343-11ee-47e9-a591-d6f08c6f7870"
+    },
+    "jxt_yxz_xzdd": {
+      "__uuid__": "5064d34c-6804-4e9d-a56d-ddf1799b0ecb"
+    },
+    "loading": {
+      "__uuid__": "ed2108e8-6ea3-4bc8-8fbf-be605adfa43e"
+    },
+    "logo": {
+      "__uuid__": "87c9dde8-4782-42bb-8d89-3f4c2f3ed902"
+    },
+    "musicoff": {
+      "__uuid__": "cf648f58-deda-48b4-bd29-4d116f83a436"
+    },
+    "musicon": {
+      "__uuid__": "e89e7812-741e-467c-b23c-a49dfe5c5e95"
+    },
+    "play": {
+      "__uuid__": "3a720633-7656-4a27-be43-2d8691289de1"
+    },
+    "tryagian": {
+      "__uuid__": "0cbda17b-7ecf-429b-88fe-4a9377603f89"
+    }
+  }
+}

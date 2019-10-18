@@ -1,0 +1,29 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "tryagian",
+    "texture": "452ee0a5-38a8-4f7f-b687-34a2939d56eb",
+    "atlas": "cfedbf6a-c4b9-42c2-a171-ca3bcc2a945d",
+    "rect": [
+      117,
+      461,
+      371,
+      83
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      371,
+      83
+    ],
+    "rotated": 1,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

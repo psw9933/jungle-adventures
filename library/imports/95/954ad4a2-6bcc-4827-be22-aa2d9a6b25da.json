@@ -1,0 +1,29 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "SpriteAtlasTexture-UI (Group 0)-2048x2048-fmt4_23",
+    "texture": "452ee0a5-38a8-4f7f-b687-34a2939d56eb",
+    "atlas": "cfedbf6a-c4b9-42c2-a171-ca3bcc2a945d",
+    "rect": [
+      187,
+      1130,
+      116,
+      122
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      116,
+      122
+    ],
+    "rotated": 1,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
