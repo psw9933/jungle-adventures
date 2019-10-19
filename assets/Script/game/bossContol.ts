@@ -2,7 +2,7 @@ import { gameProtocol } from "./gameProtocol"
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class NewClass extends cc.Component {
+export default class bossContol extends cc.Component {
 
     /**角色运动类型 */
     @property
@@ -10,7 +10,7 @@ export default class NewClass extends cc.Component {
 
     private spine: sp.Skeleton = null;
     /**人物朝向 true为右方false为左边 */
-    public Orientation: boolean = true;
+    public Orientation: boolean = false;
 
     //动画节点缩放 用来控制面向
     private playerScale: any = null;
@@ -36,7 +36,13 @@ export default class NewClass extends cc.Component {
     }
 
     // update (dt) {}
+    onMuzzlePos(){
+        let size=this.node.getContentSize();
+        let x=(size.width/2)*this.playerScale;
+        let y=(size.height/2)*this.playerScale;
 
+        return new cc.Vec2(x,y)
+    }
     private isPatrol: boolean = false
     patrolStatus() {
         if (this.isPatrol) return;
@@ -59,7 +65,13 @@ export default class NewClass extends cc.Component {
 
     private isAttack: boolean = false
     attackStatus() {
-        
+        if (this.isAttack) return;
+        this.isAttack = true;
+
+        this.node.stopAllActions();
+        this.spine.setAnimation(1, 'attack', true)
+        //cc.log('attackStatus');
+        cc.systemEvent.emit(gameProtocol.event.bossShooting, this);
     }
 
     update(dt) {

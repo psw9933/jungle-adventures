@@ -13,6 +13,10 @@ var gameProtocol = {
          */
         playerShooting: "player射击",
         /**
+         * boss射击
+         */
+        bossShooting: "boss射击",
+        /**
          * 开始游戏
          */
         playGame: "开始游戏",

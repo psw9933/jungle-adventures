@@ -54,21 +54,21 @@ var battleView = /** @class */ (function (_super) {
         this.initPlayer();
         this.initBoss();
         this.initBtnControl();
-        this.initCollisionArea();
         this.initBulletPool();
     };
+    battleView.prototype.onDestroy = function () {
+        this.clearEvent();
+    };
     battleView.prototype.initEvent = function () {
-        cc.systemEvent.on(gameProtocol_1.gameProtocol.event.playerShooting, this.shoot, this);
+        cc.systemEvent.on(gameProtocol_1.gameProtocol.event.playerShooting, this.playerShoot, this);
+        cc.systemEvent.on(gameProtocol_1.gameProtocol.event.bossShooting, this.bossShoot, this);
     };
     battleView.prototype.clearEvent = function () {
-        cc.systemEvent.off(gameProtocol_1.gameProtocol.event.playerShooting, this.shoot, this);
+        cc.systemEvent.off(gameProtocol_1.gameProtocol.event.playerShooting, this.playerShoot, this);
+        cc.systemEvent.off(gameProtocol_1.gameProtocol.event.bossShooting, this.bossShoot, this);
     };
     battleView.prototype.initBtnControl = function () {
         cc.find('operationMenu', this.node).getComponent('gameKeyControl').playerControl = this.playerNode.getComponent('playerControl');
-    };
-    battleView.prototype.initCollisionArea = function () {
-        //this.landArea=cc.find('background/land',this.node).getComponent(cc.BoxCollider)
-        //cc.log(this.landArea)
     };
     battleView.prototype.initPlayer = function () {
         this.playerNode = cc.instantiate(this.PlayerPre);
@@ -141,14 +141,36 @@ var battleView = /** @class */ (function (_super) {
     battleView.prototype.initBulletPool = function () {
         this.bulletPool = new cc.NodePool();
         for (var i = 0; i < this.maxBulletCount; ++i) {
-            var bullet = cc.instantiate(this.bulletPre); // 创建节点
+            var bullet = cc.instantiate(this.bulletPre); // 创建节点；
+            bullet.getComponent('gameBullet').init('player');
             this.bulletPool.put(bullet); // 通过 put 接口放入对象池
         }
     };
-    battleView.prototype.shoot = function () {
+    battleView.prototype.playerShoot = function () {
         var bullet = this.createBulletNode();
         var pos = this.LaunchPosition();
         this.playBulletAni(bullet, pos);
+    };
+    battleView.prototype.bossShoot = function () {
+        var bullet = cc.instantiate(this.bulletPre);
+        bullet.getComponent('gameBullet').init('boss');
+        bullet.parent = this.collisionLayer;
+        var _pos = this.bossNode.getComponent('bossContol').onMuzzlePos();
+        var playerPos = this.bossNode.getPosition();
+        var _x = playerPos.x + _pos.x;
+        var _y = playerPos.y + _pos.y;
+        if (!this.bossNode.getComponent('bossContol').Orientation) {
+            _x = playerPos.x - _pos.x;
+        }
+        var pos = new cc.Vec2(_x, _y);
+        bullet.setPosition(pos);
+        var to_pos = new cc.Vec2(pos.x + 200, pos.y);
+        if (!this.bossNode.getComponent('bossContol').Orientation) {
+            to_pos = new cc.Vec2(pos.x - 200, pos.y);
+        }
+        bullet.runAction(cc.sequence(cc.moveTo(0.5, to_pos).easing(cc.easeIn(0.5)), cc.callFunc(function () {
+            bullet.setPosition(pos);
+        })).repeatForever());
     };
     battleView.prototype.createBulletNode = function () {
         var bullet = null;
@@ -164,6 +186,7 @@ var battleView = /** @class */ (function (_super) {
         }
         return bullet;
     };
+    //player的枪口位置
     battleView.prototype.LaunchPosition = function () {
         var _pos = this.playerNode.getComponent('playerControl').onMuzzlePos();
         var playerPos = this.playerNode.getPosition();

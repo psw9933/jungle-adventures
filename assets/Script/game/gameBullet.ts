@@ -13,11 +13,11 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class gameBullet extends cc.Component {
 
-    @property(cc.Label)
-    label: cc.Label = null;
+    @property(cc.SpriteFrame)
+    playerBulletSPF: cc.SpriteFrame = null;
 
-    @property
-    text: string = 'hello';
+    @property(cc.SpriteFrame)
+    bossBulletSPF: cc.SpriteFrame = null;
 
     // LIFE-CYCLE CALLBACKS:
 
@@ -27,5 +27,14 @@ export default class gameBullet extends cc.Component {
 
     }
 
+    init(_object){
+        if(_object=='player'){
+            this.node.getComponent(cc.Sprite).spriteFrame=this.playerBulletSPF
+        }
+
+        if(_object=='boss'){
+            this.node.getComponent(cc.Sprite).spriteFrame=this.bossBulletSPF
+        }
+    }
     // update (dt) {}
 }

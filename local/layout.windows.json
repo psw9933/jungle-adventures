@@ -29,21 +29,21 @@
                     "children": [
                       "assets"
                     ],
-                    "height": 635,
+                    "height": 669,
                     "type": "panel",
-                    "width": 311
+                    "width": 299
                   },
                   {
                     "active": 0,
                     "children": [
                       "scene"
                     ],
-                    "height": 635,
+                    "height": 669,
                     "type": "panel",
-                    "width": 1094.984375
+                    "width": 1106.984375
                   }
                 ],
-                "height": 635,
+                "height": 669,
                 "type": "dock-h",
                 "width": 1407.984375
               },
@@ -53,7 +53,7 @@
                   "console",
                   "timeline"
                 ],
-                "height": 300,
+                "height": 266,
                 "type": "panel",
                 "width": 1407.984375
               }

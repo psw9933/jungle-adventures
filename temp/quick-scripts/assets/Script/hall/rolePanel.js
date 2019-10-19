@@ -73,6 +73,11 @@ var rolePanel = /** @class */ (function (_super) {
             _item.getComponent(cc.Button).clickEvents[0].customEventData = this.heros[index];
             //cc.log(_item.getComponent(cc.Button))
             _item.parent = cc.find("choiceHero/view/content", this.node);
+            if (gameRes_1.playerRes[this.heros[index]].aniPath == null) {
+                _item.getComponent(cc.Button).interactable = false;
+                _item.getComponent(cc.Toggle).interactable = false;
+                _item.getChildByName('Prohibit').active = true;
+            }
         }
     };
     /**

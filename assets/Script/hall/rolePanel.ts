@@ -63,6 +63,12 @@ export default class rolePanel extends cc.Component {
             _item.getComponent(cc.Button).clickEvents[0].customEventData = this.heros[index];
             //cc.log(_item.getComponent(cc.Button))
             _item.parent = cc.find("choiceHero/view/content", this.node);
+
+            if(playerRes[this.heros[index]].aniPath==null){
+                _item.getComponent(cc.Button).interactable=false;
+                _item.getComponent(cc.Toggle).interactable=false;
+                _item.getChildByName('Prohibit').active=true;
+            }
         }
 
     }

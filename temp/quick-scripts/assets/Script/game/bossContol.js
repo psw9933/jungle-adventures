@@ -22,24 +22,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var gameProtocol_1 = require("./gameProtocol");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var NewClass = /** @class */ (function (_super) {
-    __extends(NewClass, _super);
-    function NewClass() {
+var bossContol = /** @class */ (function (_super) {
+    __extends(bossContol, _super);
+    function bossContol() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         /**角色运动类型 */
         _this._actionType = gameProtocol_1.gameProtocol.bossControl.actionType.patrol;
         _this.spine = null;
         /**人物朝向 true为右方false为左边 */
-        _this.Orientation = true;
+        _this.Orientation = false;
         //动画节点缩放 用来控制面向
         _this.playerScale = null;
         _this.patrolArea = 0;
-        // update (dt) {}
         _this.isPatrol = false;
         _this.isAttack = false;
         return _this;
     }
-    NewClass.prototype.onLoad = function () {
+    bossContol.prototype.onLoad = function () {
         this.playerScale = 0.6;
         this.patrolArea = gameProtocol_1.gameProtocol.bossControl.patrolArea;
         this.initEvent();
@@ -47,13 +46,20 @@ var NewClass = /** @class */ (function (_super) {
         this.node.scale = this.playerScale;
         //this.patrolStatus()
     };
-    NewClass.prototype.initEvent = function () {
+    bossContol.prototype.initEvent = function () {
         //cc.systemEvent.on(gameProtocol.event.playerShooting, this.Shooting, this);
     };
-    NewClass.prototype.clearEvent = function () {
+    bossContol.prototype.clearEvent = function () {
         //cc.systemEvent.off(gameProtocol.event.playerShooting, this.Shooting, this);
     };
-    NewClass.prototype.patrolStatus = function () {
+    // update (dt) {}
+    bossContol.prototype.onMuzzlePos = function () {
+        var size = this.node.getContentSize();
+        var x = (size.width / 2) * this.playerScale;
+        var y = (size.height / 2) * this.playerScale;
+        return new cc.Vec2(x, y);
+    };
+    bossContol.prototype.patrolStatus = function () {
         var _this = this;
         if (this.isPatrol)
             return;
@@ -70,9 +76,16 @@ var NewClass = /** @class */ (function (_super) {
         });
         this.node.runAction(cc.sequence(action1, cc.moveTo(2, left_pos), action2, cc.moveTo(2, right_pos)).repeatForever());
     };
-    NewClass.prototype.attackStatus = function () {
+    bossContol.prototype.attackStatus = function () {
+        if (this.isAttack)
+            return;
+        this.isAttack = true;
+        this.node.stopAllActions();
+        this.spine.setAnimation(1, 'attack', true);
+        //cc.log('attackStatus');
+        cc.systemEvent.emit(gameProtocol_1.gameProtocol.event.bossShooting, this);
     };
-    NewClass.prototype.update = function (dt) {
+    bossContol.prototype.update = function (dt) {
         switch (this._actionType) {
             case gameProtocol_1.gameProtocol.bossControl.actionType.patrol:
                 this.patrolStatus();
@@ -84,13 +97,13 @@ var NewClass = /** @class */ (function (_super) {
     };
     __decorate([
         property
-    ], NewClass.prototype, "_actionType", void 0);
-    NewClass = __decorate([
+    ], bossContol.prototype, "_actionType", void 0);
+    bossContol = __decorate([
         ccclass
-    ], NewClass);
-    return NewClass;
+    ], bossContol);
+    return bossContol;
 }(cc.Component));
-exports.default = NewClass;
+exports.default = bossContol;
 
 cc._RF.pop();
         }

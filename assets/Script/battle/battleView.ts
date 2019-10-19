@@ -46,23 +46,28 @@ export default class battleView extends cc.Component {
         this.initBoss();
 
         this.initBtnControl();
-        this.initCollisionArea();
         
         this.initBulletPool()
     }
+
+    onDestroy(){
+        this.clearEvent()
+    }
+
     private initEvent() {
-        cc.systemEvent.on(gameProtocol.event.playerShooting, this.shoot, this);
+        cc.systemEvent.on(gameProtocol.event.playerShooting, this.playerShoot, this);
+        cc.systemEvent.on(gameProtocol.event.bossShooting, this.bossShoot, this);
     }
+
     private clearEvent() {
-        cc.systemEvent.off(gameProtocol.event.playerShooting, this.shoot, this);
+        cc.systemEvent.off(gameProtocol.event.playerShooting, this.playerShoot, this);
+        cc.systemEvent.off(gameProtocol.event.bossShooting, this.bossShoot, this);
     }
+
     initBtnControl(){
         cc.find('operationMenu',this.node).getComponent('gameKeyControl').playerControl=this.playerNode.getComponent('playerControl');
     }
-    initCollisionArea(){
-        //this.landArea=cc.find('background/land',this.node).getComponent(cc.BoxCollider)
-        //cc.log(this.landArea)
-    }
+
     initPlayer(){
         this.playerNode=cc.instantiate(this.PlayerPre);
         //this.playerNode.getComponent(sp.SkeletonData);
@@ -148,17 +153,43 @@ export default class battleView extends cc.Component {
     initBulletPool(){
         this.bulletPool = new cc.NodePool();
         for (let i = 0; i < this.maxBulletCount; ++i) {
-            let bullet = cc.instantiate(this.bulletPre); // 创建节点
+            let bullet = cc.instantiate(this.bulletPre); // 创建节点；
+            bullet.getComponent('gameBullet').init('player');
             this.bulletPool.put(bullet); // 通过 put 接口放入对象池
         }
     }
 
-    shoot(){
+    playerShoot(){
         let bullet=this.createBulletNode();
         let pos=this.LaunchPosition();
         this.playBulletAni(bullet,pos)
     }
 
+    bossShoot(){
+        let bullet = cc.instantiate(this.bulletPre);
+        bullet.getComponent('gameBullet').init('boss');
+        bullet.parent=this.collisionLayer;
+
+        let _pos=this.bossNode.getComponent('bossContol').onMuzzlePos()
+        let playerPos=this.bossNode.getPosition();
+        let _x=playerPos.x+_pos.x;
+        let _y=playerPos.y+_pos.y;
+
+        if(!this.bossNode.getComponent('bossContol').Orientation){
+            _x=playerPos.x-_pos.x;
+        }
+
+        let pos=new cc.Vec2(_x,_y);
+        bullet.setPosition(pos);
+        let to_pos=new cc.Vec2(pos.x+200,pos.y)
+        if(!this.bossNode.getComponent('bossContol').Orientation){
+            to_pos=new cc.Vec2(pos.x-200,pos.y);
+        }
+
+        bullet.runAction(cc.sequence(cc.moveTo(0.5,to_pos).easing(cc.easeIn(0.5)),cc.callFunc(()=>{
+            bullet.setPosition(pos);
+        })).repeatForever())
+    }
     createBulletNode(){
         let bullet = null;
         if (this.bulletPool.size() > 0) { // 通过 size 接口判断对象池中是否有空闲的对象
@@ -173,6 +204,7 @@ export default class battleView extends cc.Component {
         return bullet
     }
 
+    //player的枪口位置
     LaunchPosition(){
         let _pos=this.playerNode.getComponent('playerControl').onMuzzlePos()
         let playerPos=this.playerNode.getPosition();

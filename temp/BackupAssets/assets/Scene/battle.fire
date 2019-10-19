@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.6456433006764263,
-      "y": 0.6456433006764263,
+      "x": 0.4629117996756103,
+      "y": 0.4629117996756103,
       "z": 1
     },
     "_quat": {
@@ -80,17 +80,17 @@
         "__id__": 53
       },
       {
-        "__id__": 56
+        "__id__": 59
       }
     ],
     "_active": true,
     "_level": 1,
     "_components": [
       {
-        "__id__": 64
+        "__id__": 67
       },
       {
-        "__id__": 65
+        "__id__": 68
       }
     ],
     "_prefab": null,
@@ -2254,15 +2254,19 @@
     "_parent": {
       "__id__": 2
     },
-    "_children": [],
+    "_children": [
+      {
+        "__id__": 54
+      }
+    ],
     "_active": true,
     "_level": 2,
     "_components": [
       {
-        "__id__": 54
+        "__id__": 57
       },
       {
-        "__id__": 55
+        "__id__": 58
       }
     ],
     "_prefab": null,
@@ -2311,6 +2315,305 @@
     "_id": "b922VAW4hDvI7ZNIBdpskY"
   },
   {
+    "__type__": "cc.Node",
+    "_name": "stone",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 53
+    },
+    "_children": [],
+    "_active": true,
+    "_level": 3,
+    "_components": [
+      {
+        "__id__": 55
+      },
+      {
+        "__id__": 56
+      }
+    ],
+    "_prefab": null,
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 91,
+      "height": 59
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": -125,
+      "y": -256,
+      "z": 0
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 0.8,
+      "y": 0.8,
+      "z": 1
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_quat": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "groupIndex": 0,
+    "_id": "d6DakBLitCWKZzQhhgEsy5"
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 54
+    },
+    "_enabled": true,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
+    "_spriteFrame": {
+      "__uuid__": "c0469e13-7ddc-44a2-8394-dfeaec1fd983"
+    },
+    "_type": 0,
+    "_sizeMode": 1,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_state": 0,
+    "_atlas": null,
+    "_id": "cfoQS7hq5BHJHYqvBGLN6U"
+  },
+  {
+    "__type__": "cc.PolygonCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 54
+    },
+    "_enabled": true,
+    "tag": 0,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "points": [
+      {
+        "__type__": "cc.Vec2",
+        "x": -3.5,
+        "y": 29.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -9.5,
+        "y": 17.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -9.5,
+        "y": 14.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -11.5,
+        "y": 13.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -12.5,
+        "y": 0.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -17.5,
+        "y": 5.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -21.5,
+        "y": 5.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -23.5,
+        "y": 3.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -24.5,
+        "y": -4.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -26.5,
+        "y": -5.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -29.5,
+        "y": 0.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -29.5,
+        "y": 4.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -31.5,
+        "y": 4.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -33.5,
+        "y": 10.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -38.5,
+        "y": 11.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -39.5,
+        "y": 4.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -41.5,
+        "y": 1.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -41.5,
+        "y": -15.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -43.5,
+        "y": -16.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": -45.5,
+        "y": -29.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 45.5,
+        "y": -28.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 45.5,
+        "y": -18.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 42.5,
+        "y": -18.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 40.5,
+        "y": -12.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 37.5,
+        "y": -11.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 37.5,
+        "y": -0.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 33.5,
+        "y": 7.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 28.5,
+        "y": 7.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 26.5,
+        "y": 1.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 24.5,
+        "y": 1.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 23.5,
+        "y": 11.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 20.5,
+        "y": 15.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 17.5,
+        "y": 14.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 11.5,
+        "y": 7.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 8.5,
+        "y": 17.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 6.5,
+        "y": 18.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 6.5,
+        "y": 21.5
+      },
+      {
+        "__type__": "cc.Vec2",
+        "x": 2.5,
+        "y": 29.5
+      }
+    ],
+    "_id": "61bAbC8PRIf7/VcsmzYIGF"
+  },
+  {
     "__type__": "cc.Widget",
     "_name": "",
     "_objFlags": 0,
@@ -2356,14 +2659,14 @@
     },
     "_children": [
       {
-        "__id__": 57
+        "__id__": 60
       }
     ],
     "_active": false,
     "_level": 2,
     "_components": [
       {
-        "__id__": 62
+        "__id__": 65
       }
     ],
     "_prefab": null,
@@ -2416,21 +2719,21 @@
     "_name": "Background",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 56
+      "__id__": 59
     },
     "_children": [
       {
-        "__id__": 58
+        "__id__": 61
       }
     ],
     "_active": true,
     "_level": 2,
     "_components": [
       {
-        "__id__": 60
+        "__id__": 63
       },
       {
-        "__id__": 61
+        "__id__": 64
       }
     ],
     "_prefab": null,
@@ -2483,14 +2786,14 @@
     "_name": "Label",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 57
+      "__id__": 60
     },
     "_children": [],
     "_active": true,
     "_level": 3,
     "_components": [
       {
-        "__id__": 59
+        "__id__": 62
       }
     ],
     "_prefab": null,
@@ -2543,7 +2846,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 58
+      "__id__": 61
     },
     "_enabled": true,
     "_useOriginalSize": false,
@@ -2568,7 +2871,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 57
+      "__id__": 60
     },
     "_enabled": true,
     "_srcBlendFactor": 770,
@@ -2596,7 +2899,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 57
+      "__id__": 60
     },
     "_enabled": true,
     "alignMode": 0,
@@ -2623,14 +2926,14 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 56
+      "__id__": 59
     },
     "_enabled": true,
     "duration": 0.1,
     "zoomScale": 1.2,
     "clickEvents": [
       {
-        "__id__": 63
+        "__id__": 66
       }
     ],
     "_N$interactable": true,
@@ -2698,7 +3001,7 @@
       "__uuid__": "29158224-f8dd-4661-a796-1ffab537140e"
     },
     "_N$target": {
-      "__id__": 57
+      "__id__": 60
     },
     "_id": "0arZflU4pN86j4iovOKG6y"
   },

@@ -280,7 +280,7 @@
     "relativePath": "resources\\images\\battle\\obstacle.plist"
   },
   "bf4e3a23-f1cb-446e-94f8-26e87b92ef7d": {
-    "asset": 1571308371298,
+    "asset": 1571385772727,
     "meta": 1569315014724,
     "relativePath": "resources\\images\\common"
   },
@@ -315,13 +315,13 @@
     "relativePath": "resources\\prefabs"
   },
   "724a8c3e-2404-4115-ba74-6f42b5329760": {
-    "asset": 1571306856081,
+    "asset": 1571389210962,
     "meta": 1568716911885,
     "relativePath": "resources\\prefabs\\game"
   },
   "fd4e208f-85bb-415c-81ff-a2a4d4139be3": {
-    "asset": 1571124478635,
-    "meta": 1571216696756,
+    "asset": 1571475492054,
+    "meta": 1571475492069,
     "relativePath": "resources\\prefabs\\game\\bullet.prefab"
   },
   "fb1722b7-cc8d-4622-92d7-b63119a18fdd": {
@@ -335,8 +335,8 @@
     "relativePath": "resources\\prefabs\\panel"
   },
   "cd943b9e-e39c-4b24-a3f4-4d8c41e0ecf3": {
-    "asset": 1571385768279,
-    "meta": 1571385768298,
+    "asset": 1571467685840,
+    "meta": 1571467685862,
     "relativePath": "resources\\prefabs\\panel\\rolePanel.prefab"
   },
   "f3fa3715-87aa-4077-8d02-4e3fd25646e8": {
@@ -345,7 +345,7 @@
     "relativePath": "resources\\prefabs\\panel\\signInPanel.prefab"
   },
   "d110c6d9-be11-464d-abb1-48962233b1ec": {
-    "asset": 1571305095096,
+    "asset": 1571386801778,
     "meta": 1569314886543,
     "relativePath": "resources\\spine"
   },
@@ -395,8 +395,8 @@
     "relativePath": "Scene"
   },
   "dcf00a83-a661-4071-827d-6b83e8d4a66d": {
-    "asset": 1571397379293,
-    "meta": 1571397379306,
+    "asset": 1571476247699,
+    "meta": 1571476247724,
     "relativePath": "Scene\\battle.fire"
   },
   "4734c20c-0db8-4eb2-92ea-e692f4d70934": {
@@ -415,14 +415,9 @@
     "relativePath": "Scene\\home.fire"
   },
   "56dfbcb4-c038-4706-8927-f579dbeb6c5f": {
-    "asset": 1571216038477,
+    "asset": 1571395802626,
     "meta": 1568625804893,
     "relativePath": "Script\\game"
-  },
-  "3aba78f1-1676-437b-a9fc-eaa3506b4e18": {
-    "asset": 1571124487034,
-    "meta": 1571216697507,
-    "relativePath": "Script\\game\\gameBullet.ts"
   },
   "264c00f5-cd95-4947-9d07-eb7f35c5e84d": {
     "asset": 1571126333059,
@@ -474,11 +469,6 @@
     "meta": 1571216697997,
     "relativePath": "Script\\module\\ManagerWindow.ts"
   },
-  "b3c810df-4849-46dc-8182-35afdcc0a13d": {
-    "asset": 1571219076117,
-    "meta": 1571219087358,
-    "relativePath": "Script\\hall\\rolePanel.ts"
-  },
   "85387e5c-8d00-4236-857d-a00f6d3e3d66": {
     "asset": 1571304701873,
     "meta": 1571304705316,
@@ -510,7 +500,7 @@
     "relativePath": "resources\\images\\common\\images.png"
   },
   "45799d45-9d66-4d34-9647-48c5b0c595e5": {
-    "asset": 1571386796995,
+    "asset": 1571387268210,
     "meta": 1571386796997,
     "relativePath": "resources\\spine\\boss"
   },
@@ -529,34 +519,59 @@
     "meta": 1571387216672,
     "relativePath": "resources\\spine\\boss\\sniper.json"
   },
-  "14e39b34-cbeb-42db-8313-5e2d2855d0e6": {
-    "asset": 1571389068988,
-    "meta": 1571389193204,
-    "relativePath": "Script\\game\\gameRes.ts"
-  },
   "bbedd1cb-881b-40a6-96d4-0d6f7baf05f5": {
-    "asset": 1571395733867,
-    "meta": 1571395733894,
+    "asset": 1571475542554,
+    "meta": 1571475542563,
     "relativePath": "resources\\prefabs\\game\\boss.prefab"
   },
-  "7ee9f063-f5eb-416f-b7a2-3163faa6a2eb": {
-    "asset": 1571395731941,
-    "meta": 1571395733120,
-    "relativePath": "Script\\game\\bossContol.ts"
+  "14e39b34-cbeb-42db-8313-5e2d2855d0e6": {
+    "asset": 1571467293992,
+    "meta": 1571467389957,
+    "relativePath": "Script\\game\\gameRes.ts"
   },
-  "2f7acb00-d7c9-44a6-a1d5-d1e78f812f80": {
-    "asset": 1571396315365,
-    "meta": 1571396478070,
-    "relativePath": "Script\\game\\gameProtocol.ts"
-  },
-  "9e63de80-15ef-40ea-9498-d3ef4a584e25": {
-    "asset": 1571397296804,
-    "meta": 1571397297848,
-    "relativePath": "Script\\battle\\battleView.ts"
+  "b3c810df-4849-46dc-8182-35afdcc0a13d": {
+    "asset": 1571467611198,
+    "meta": 1571467612356,
+    "relativePath": "Script\\hall\\rolePanel.ts"
   },
   "0944dbed-0cdd-43bc-b843-78f88d93d02f": {
-    "asset": 1571397439654,
-    "meta": 1571397476570,
+    "asset": 1571469922489,
+    "meta": 1571469952019,
     "relativePath": "Script\\game\\collisionDetection.ts"
+  },
+  "730fd6af-a05a-48d4-a424-babe002b38e1": {
+    "asset": 1571470209995,
+    "meta": 1571470209997,
+    "relativePath": "resources\\spine\\ani"
+  },
+  "8c6b0791-c6d5-4a33-9077-9d82710d6924": {
+    "asset": 1571470495666,
+    "meta": 1571470495692,
+    "relativePath": "resources\\spine\\ani\\bullet.anim"
+  },
+  "2f7acb00-d7c9-44a6-a1d5-d1e78f812f80": {
+    "asset": 1571471906708,
+    "meta": 1571471914400,
+    "relativePath": "Script\\game\\gameProtocol.ts"
+  },
+  "3aba78f1-1676-437b-a9fc-eaa3506b4e18": {
+    "asset": 1571474553156,
+    "meta": 1571474554178,
+    "relativePath": "Script\\game\\gameBullet.ts"
+  },
+  "9e63de80-15ef-40ea-9498-d3ef4a584e25": {
+    "asset": 1571475613015,
+    "meta": 1571475614156,
+    "relativePath": "Script\\battle\\battleView.ts"
+  },
+  "7ee9f063-f5eb-416f-b7a2-3163faa6a2eb": {
+    "asset": 1571475660756,
+    "meta": 1571475663020,
+    "relativePath": "Script\\game\\bossContol.ts"
+  },
+  "f0ea9188-1ebb-473f-96df-99484510973c": {
+    "asset": 1571301051881,
+    "meta": 1571475893642,
+    "relativePath": "resources\\images\\battle\\stone.png"
   }
 }

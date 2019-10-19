@@ -1,22 +1,18 @@
-// Learn TypeScript:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/typescript.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
-
+import { gameProtocol } from "./gameProtocol"
 const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class collisionDetection extends cc.Component {
 
 
-    // onLoad () {}
+    
     private player:cc.Node=null;
     private boss:cc.Node=null;
+
+    private patrolArea: number = 0
+    onLoad () {
+        this.patrolArea = gameProtocol.bossControl.patrolArea;
+    }
     start () {
 
     }
@@ -29,7 +25,16 @@ export default class collisionDetection extends cc.Component {
         this.boss=cc.find('boss',this.node)
     }
     
+    isEnter:boolean=false
+    enterPatrolArea(){
+        if(this.isEnter) return;
+        let distance=this.player.getPosition().sub(this.boss.getPosition()).mag();
+        if(distance<=this.patrolArea*2){
+            this.boss.getComponent('bossContol')._actionType=gameProtocol.bossControl.actionType.attack;
+            this.isEnter=true
+        }
+    }
     update(){
-        
+        this.enterPatrolArea()
     }
 }

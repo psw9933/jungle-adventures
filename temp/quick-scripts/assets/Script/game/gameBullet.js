@@ -34,8 +34,8 @@ var gameBullet = /** @class */ (function (_super) {
     __extends(gameBullet, _super);
     function gameBullet() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.label = null;
-        _this.text = 'hello';
+        _this.playerBulletSPF = null;
+        _this.bossBulletSPF = null;
         return _this;
         // update (dt) {}
     }
@@ -43,12 +43,20 @@ var gameBullet = /** @class */ (function (_super) {
     // onLoad () {}
     gameBullet.prototype.start = function () {
     };
+    gameBullet.prototype.init = function (_object) {
+        if (_object == 'player') {
+            this.node.getComponent(cc.Sprite).spriteFrame = this.playerBulletSPF;
+        }
+        if (_object == 'boss') {
+            this.node.getComponent(cc.Sprite).spriteFrame = this.bossBulletSPF;
+        }
+    };
     __decorate([
-        property(cc.Label)
-    ], gameBullet.prototype, "label", void 0);
+        property(cc.SpriteFrame)
+    ], gameBullet.prototype, "playerBulletSPF", void 0);
     __decorate([
-        property
-    ], gameBullet.prototype, "text", void 0);
+        property(cc.SpriteFrame)
+    ], gameBullet.prototype, "bossBulletSPF", void 0);
     gameBullet = __decorate([
         ccclass
     ], gameBullet);
