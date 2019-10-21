@@ -25,11 +25,11 @@ var ManagerWindow = /** @class */ (function () {
      */
     ManagerWindow.prototype.clearEvent = function () {
     };
-    ManagerWindow.prototype.clear = function () {
-        cc.game.removePersistRootNode(this.managerNode);
-        this.clearEvent();
-        ManagerWindow.m_instance = null;
-    };
+    // clear() {
+    //     cc.game.removePersistRootNode(this.managerNode)
+    //     this.clearEvent()
+    //     ManagerWindow.m_instance = null
+    // }
     ManagerWindow.getInstance = function () {
         if (!ManagerWindow.m_instance)
             ManagerWindow.m_instance = new ManagerWindow();

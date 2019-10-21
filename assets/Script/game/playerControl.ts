@@ -82,6 +82,21 @@ export default class playerControl extends cc.Component {
 
         return new cc.Vec2(x,y)
     }
+    onCollisionEnter(other, self) {
+        this.injured()
+    }
+
+    onCollisionStay(other, self) {
+        cc.log('on collision stay');
+    }
+
+    onCollisionExit(other, self) {
+        cc.log('on collision Exit');
+        // this.touchingNumber--;
+        // if (this.touchingNumber === 0) {
+        //     this.node.color = cc.Color.WHITE;
+        // }
+    }
     // methods
     move() {
         //人物面向转身
@@ -117,7 +132,26 @@ export default class playerControl extends cc.Component {
             this.hasAniJump=false
         })))
     }
+    injured(){
+        cc.systemEvent.emit(gameProtocol.event.reduceHealth, this);
+        this._motionType = gameProtocol.playerControl.motionType.STOP;
+        this.spine.setAnimation(1, 'die1', true);
+        //this.spine.addAnimation(0, 'idle', true, 0.5);
 
+        let _x=this.node.getPosition().x;
+        let _y=this.node.getPosition().y;
+
+        if (this.Orientation) {
+            _x=this.node.getPosition().x-30
+        }
+        else {
+            _x=this.node.getPosition().x+30
+        }
+        this.node.runAction(cc.sequence(cc.moveTo(0.5,new cc.Vec2(_x,_y)),cc.callFunc(()=>{
+            //this.spine.setAnimation(1, 'idel', true);
+            this._motionType = gameProtocol.playerControl.motionType.STOP;
+        })))
+    }
     Shooting() {
         cc.log("Shooting")
         if (this.hasAniRun) {

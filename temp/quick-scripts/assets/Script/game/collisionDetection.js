@@ -33,6 +33,9 @@ var collisionDetection = /** @class */ (function (_super) {
         return _this;
     }
     collisionDetection.prototype.onLoad = function () {
+        cc.director.getCollisionManager().enabled = true;
+        //碰撞组件边线可见
+        //cc.director.getCollisionManager().enabledDebugDraw = true;
         this.patrolArea = gameProtocol_1.gameProtocol.bossControl.patrolArea;
     };
     collisionDetection.prototype.start = function () {
@@ -43,16 +46,22 @@ var collisionDetection = /** @class */ (function (_super) {
     collisionDetection.prototype.initBoss = function () {
         this.boss = cc.find('boss', this.node);
     };
+    collisionDetection.prototype.test = function () {
+        cc.log(cc.director.getCollisionManager().enabled);
+    };
     collisionDetection.prototype.enterPatrolArea = function () {
         if (this.isEnter)
             return;
-        var distance = this.player.getPosition().sub(this.boss.getPosition()).mag();
-        if (distance <= this.patrolArea * 2) {
+        if (this.player.getPosition().sub(this.boss.getPosition()).mag() >= this.patrolArea * 3) {
+            return;
+        }
+        else {
             this.boss.getComponent('bossContol')._actionType = gameProtocol_1.gameProtocol.bossControl.actionType.attack;
             this.isEnter = true;
         }
     };
     collisionDetection.prototype.update = function () {
+        //cc.log(this.node.children)
         this.enterPatrolArea();
     };
     collisionDetection = __decorate([

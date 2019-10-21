@@ -21,6 +21,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var ManagerWindow_1 = require("../module/ManagerWindow");
+var ManagerNotice_1 = require("../module/ManagerNotice");
 var gameProtocol_1 = require("../game/gameProtocol");
 var GameInfo_1 = require("../module/GameInfo");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
@@ -36,7 +37,13 @@ var loginView = /** @class */ (function (_super) {
     }
     loginView.prototype.onLoad = function () {
         this.initEvent();
-        ManagerWindow_1.ManagerWindow.getInstance().show(this.signInPanelPre);
+        cc.log(GameInfo_1.default.getInstance().returnjustLeftStatus());
+        if (GameInfo_1.default.getInstance().returnjustLeftStatus()) {
+            this.showRolePanelPre();
+        }
+        else {
+            ManagerWindow_1.ManagerWindow.getInstance().show(this.signInPanelPre);
+        }
     };
     loginView.prototype.onDestroy = function () {
         this.clearEvent();
@@ -53,7 +60,7 @@ var loginView = /** @class */ (function (_super) {
     };
     loginView.prototype.start = function () {
         ManagerWindow_1.ManagerWindow.getInstance();
-        //ManagerWindow.getInstance().init(this.windowManagerNode)
+        ManagerNotice_1.ManagerNotice.getInstance();
     };
     loginView.prototype.showRolePanelPre = function () {
         ManagerWindow_1.ManagerWindow.getInstance().removeAll();

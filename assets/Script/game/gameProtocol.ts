@@ -21,9 +21,21 @@ var gameProtocol = {
          */
         playGame: "开始游戏",
         /**
+         * 退出游戏
+         */
+        leaveGame: "退出游戏",
+        /**
          * 显示左侧菜单
          */
         showLeftMenu: "显示左侧菜单",
+        /**
+         * 掉血
+         */
+        reduceHealth: "掉血",
+        /**
+         * 复活
+         */
+        resurrection: "复活",
     },
 
 
@@ -68,7 +80,8 @@ var gameProtocol = {
             RIGHT: 1,
             STOP: 2,
             JUMP:3,
-            SHOOT:4
+            SHOOT:4,
+            INJURED:5
         }),
         /**
          * 位置类型

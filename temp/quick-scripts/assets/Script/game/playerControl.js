@@ -85,6 +85,19 @@ var playerControl = /** @class */ (function (_super) {
         var y = (size.height / 2) * this.playerScale;
         return new cc.Vec2(x, y);
     };
+    playerControl.prototype.onCollisionEnter = function (other, self) {
+        this.injured();
+    };
+    playerControl.prototype.onCollisionStay = function (other, self) {
+        cc.log('on collision stay');
+    };
+    playerControl.prototype.onCollisionExit = function (other, self) {
+        cc.log('on collision Exit');
+        // this.touchingNumber--;
+        // if (this.touchingNumber === 0) {
+        //     this.node.color = cc.Color.WHITE;
+        // }
+    };
     // methods
     playerControl.prototype.move = function () {
         //人物面向转身
@@ -115,6 +128,25 @@ var playerControl = /** @class */ (function (_super) {
             _this._motionType = gameProtocol_1.gameProtocol.playerControl.motionType.STOP;
             _this.setPlayerAnimation('run', true);
             _this.hasAniJump = false;
+        })));
+    };
+    playerControl.prototype.injured = function () {
+        var _this = this;
+        cc.systemEvent.emit(gameProtocol_1.gameProtocol.event.reduceHealth, this);
+        this._motionType = gameProtocol_1.gameProtocol.playerControl.motionType.STOP;
+        this.spine.setAnimation(1, 'die1', true);
+        //this.spine.addAnimation(0, 'idle', true, 0.5);
+        var _x = this.node.getPosition().x;
+        var _y = this.node.getPosition().y;
+        if (this.Orientation) {
+            _x = this.node.getPosition().x - 30;
+        }
+        else {
+            _x = this.node.getPosition().x + 30;
+        }
+        this.node.runAction(cc.sequence(cc.moveTo(0.5, new cc.Vec2(_x, _y)), cc.callFunc(function () {
+            //this.spine.setAnimation(1, 'idel', true);
+            _this._motionType = gameProtocol_1.gameProtocol.playerControl.motionType.STOP;
         })));
     };
     playerControl.prototype.Shooting = function () {

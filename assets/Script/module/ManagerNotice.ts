@@ -54,7 +54,7 @@ class ManagerNotice {
         // managerNode.width = cc.find('Canvas').width
         // managerNode.height =cc.find('Canvas').height
         managerNode.setPosition(0,cc.find('Canvas').height/4);
-        // cc.log(managerNode.getPosition())
+        cc.log(managerNode.getPosition())
         if (itemPrefab == undefined) itemPrefab = this.item
 
         let indexcount = 0

@@ -3,6 +3,16 @@
   "collision-matrix": [
     [
       true
+    ],
+    [
+      false,
+      false,
+      true
+    ],
+    [
+      false,
+      true,
+      false
     ]
   ],
   "design-resolution-height": 640,
@@ -31,7 +41,9 @@
   "fit-height": true,
   "fit-width": false,
   "group-list": [
-    "default"
+    "def",
+    "player",
+    "stone"
   ],
   "last-module-event-record-time": 1570942353206,
   "simulator-orientation": false,

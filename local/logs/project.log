@@ -1,83 +1,74 @@
-2019-10-19T06:25:56.389Z - normal: Load ~/.CocosCreator/settings.json
-2019-10-19T06:25:57.541Z - normal: Initializing Asset Database
-2019-10-19T06:25:57.544Z - normal: checking language setting...
-2019-10-19T06:25:57.544Z - normal: Language: zh
-2019-10-19T06:25:58.206Z - success: preview server running at http://localhost:7456
-2019-10-19T06:25:58.208Z - success: protocol editor-framework registered
-2019-10-19T06:25:58.208Z - success: protocol app registered
-2019-10-19T06:25:58.208Z - success: protocol theme registered
-2019-10-19T06:25:58.208Z - success: protocol packages registered
-2019-10-19T06:25:58.209Z - success: protocol uuid registerred
-2019-10-19T06:25:58.209Z - success: protocol db registerred
-2019-10-19T06:25:58.209Z - success: protocol thumbnail registerred
-2019-10-19T06:25:58.209Z - success: protocol unpack registerred
-2019-10-19T06:25:58.209Z - success: protocol disable-commonjs registerred
-2019-10-19T06:25:58.320Z - normal: connected!
-2019-10-19T06:25:58.323Z - normal: Check project D:\learn\wxGame\newDemo
-2019-10-19T06:25:58.329Z - normal: Initializing project D:\learn\wxGame\newDemo
-2019-10-19T06:25:58.832Z - normal: Initializing Cocos2d
-2019-10-19T06:25:59.946Z - normal: Initializing engine extends
-2019-10-19T06:25:59.978Z - success: asset-db-debugger loaded
-2019-10-19T06:25:59.978Z - success: baidu-adapter loaded
-2019-10-19T06:25:59.978Z - success: color-picker loaded
-2019-10-19T06:26:00.064Z - success: fb-audience-network loaded
-2019-10-19T06:26:00.116Z - success: fb-live-stream loaded
-2019-10-19T06:26:00.119Z - success: google-play-instant loaded
-2019-10-19T06:26:00.124Z - success: huawei-runtime loaded
-2019-10-19T06:26:00.356Z - success: cpk-publish loaded
-2019-10-19T06:26:00.356Z - success: jsb-adapter loaded
-2019-10-19T06:26:00.361Z - success: oppo-runtime loaded
-2019-10-19T06:26:00.363Z - success: package-manager loaded
-2019-10-19T06:26:00.480Z - success: qqplay-adapter loaded
-2019-10-19T06:26:00.481Z - success: runtime-dev-tools loaded
-2019-10-19T06:26:00.486Z - success: sdkbox loaded
-2019-10-19T06:26:00.489Z - success: tester loaded
-2019-10-19T06:26:00.491Z - success: ui-grid loaded
-2019-10-19T06:26:00.493Z - success: ui-kit-preview-extra loaded
-2019-10-19T06:26:00.495Z - success: ui-kit-preview loaded
-2019-10-19T06:26:00.497Z - success: ui-kit loaded
-2019-10-19T06:26:00.499Z - success: ui-tree loaded
-2019-10-19T06:26:00.504Z - success: vivo-runtime loaded
-2019-10-19T06:26:00.505Z - success: weapp-adapter loaded
-2019-10-19T06:26:00.505Z - success: xiaomi-adapter loaded
-2019-10-19T06:26:00.545Z - success: assets loaded
-2019-10-19T06:26:00.547Z - success: builder loaded
-2019-10-19T06:26:00.793Z - success: cocos-services loaded
-2019-10-19T06:26:00.797Z - success: console loaded
-2019-10-19T06:26:00.826Z - success: fb-instant-games loaded
-2019-10-19T06:26:00.827Z - success: google-instant-games loaded
-2019-10-19T06:26:00.831Z - success: hierarchy loaded
-2019-10-19T06:26:00.833Z - success: inspector loaded
-2019-10-19T06:26:00.834Z - success: keystore loaded
-2019-10-19T06:26:00.838Z - success: node-library loaded
-2019-10-19T06:26:00.839Z - success: package-asset loaded
-2019-10-19T06:26:00.840Z - success: preferences loaded
-2019-10-19T06:26:00.842Z - success: project-exporter loaded
-2019-10-19T06:26:00.843Z - success: project-importer loaded
-2019-10-19T06:26:00.848Z - success: project-settings loaded
-2019-10-19T06:26:00.851Z - success: scene loaded
-2019-10-19T06:26:00.852Z - success: simulator-debugger loaded
-2019-10-19T06:26:00.853Z - success: sprite-editor loaded
-2019-10-19T06:26:00.856Z - success: store loaded
-2019-10-19T06:26:00.859Z - success: timeline loaded
-2019-10-19T06:26:00.864Z - success: xiaomi-runtime loaded
-2019-10-19T06:26:00.868Z - success: bitmap-font loaded
-2019-10-19T06:26:00.869Z - success: font-slimming-tools loaded
-2019-10-19T06:26:01.038Z - success: unpack-textureatlas loaded
-2019-10-19T06:26:02.065Z - normal: Loading packages
-2019-10-19T06:26:02.073Z - normal: Watching packages
-2019-10-19T06:26:02.317Z - info: Cocos Services load base data!
-2019-10-19T06:26:02.561Z - normal: Run Application
-2019-10-19T07:34:55.792Z - error: TypeError: Cannot read property 'id' of null
-    at EventEmitter.t.on.e (C:\CocosCreator_2.0.10\resources\app.asar\editor\builtin\timeline\panel\component\home.js:1:7823)
-    at emitOne (events.js:96:13)
-    at EventEmitter.emit (events.js:191:7)
-    at Vue.clip (C:\CocosCreator_2.0.10\resources\app.asar\editor\builtin\timeline\panel\component\home.js:1:790)
-    at Watcher.run (app://node_modules/vue/dist/vue.js:3459:17)
-    at runBatcherQueue (app://node_modules/vue/dist/vue.js:3190:13)
-    at Array.flushBatcherQueue (app://node_modules/vue/dist/vue.js:3161:5)
-    at nextTickHandler (app://node_modules/vue/dist/vue.js:451:16)
-    at <anonymous>
-    at process._tickCallback (internal/process/next_tick.js:109:7)
-2019-10-19T09:04:21.116Z - failed: Can not found the asset db://assets/resources/images/battle/bullet.png/bullet
-2019-10-19T09:10:49.030Z - info: shutdown preview server
+2019-10-21T09:27:13.469Z - normal: Load ~/.CocosCreator/settings.json
+2019-10-21T09:27:14.622Z - normal: Initializing Asset Database
+2019-10-21T09:27:14.625Z - normal: checking language setting...
+2019-10-21T09:27:14.625Z - normal: Language: zh
+2019-10-21T09:27:15.732Z - success: preview server running at http://localhost:7456
+2019-10-21T09:27:15.734Z - success: protocol editor-framework registered
+2019-10-21T09:27:15.734Z - success: protocol app registered
+2019-10-21T09:27:15.734Z - success: protocol theme registered
+2019-10-21T09:27:15.734Z - success: protocol packages registered
+2019-10-21T09:27:15.735Z - success: protocol uuid registerred
+2019-10-21T09:27:15.735Z - success: protocol db registerred
+2019-10-21T09:27:15.735Z - success: protocol thumbnail registerred
+2019-10-21T09:27:15.735Z - success: protocol unpack registerred
+2019-10-21T09:27:15.735Z - success: protocol disable-commonjs registerred
+2019-10-21T09:27:15.826Z - normal: connected!
+2019-10-21T09:27:15.827Z - normal: Check project D:\learn\wxGame\newDemo
+2019-10-21T09:27:15.828Z - normal: Initializing project D:\learn\wxGame\newDemo
+2019-10-21T09:27:16.212Z - normal: Initializing Cocos2d
+2019-10-21T09:27:16.980Z - normal: Initializing engine extends
+2019-10-21T09:27:17.016Z - success: asset-db-debugger loaded
+2019-10-21T09:27:17.016Z - success: baidu-adapter loaded
+2019-10-21T09:27:17.017Z - success: color-picker loaded
+2019-10-21T09:27:17.099Z - success: fb-audience-network loaded
+2019-10-21T09:27:17.149Z - success: fb-live-stream loaded
+2019-10-21T09:27:17.152Z - success: google-play-instant loaded
+2019-10-21T09:27:17.156Z - success: huawei-runtime loaded
+2019-10-21T09:27:17.380Z - success: cpk-publish loaded
+2019-10-21T09:27:17.380Z - success: jsb-adapter loaded
+2019-10-21T09:27:17.384Z - success: oppo-runtime loaded
+2019-10-21T09:27:17.387Z - success: package-manager loaded
+2019-10-21T09:27:17.502Z - success: qqplay-adapter loaded
+2019-10-21T09:27:17.503Z - success: runtime-dev-tools loaded
+2019-10-21T09:27:17.506Z - success: sdkbox loaded
+2019-10-21T09:27:17.509Z - success: tester loaded
+2019-10-21T09:27:17.511Z - success: ui-grid loaded
+2019-10-21T09:27:17.513Z - success: ui-kit-preview-extra loaded
+2019-10-21T09:27:17.515Z - success: ui-kit-preview loaded
+2019-10-21T09:27:17.516Z - success: ui-kit loaded
+2019-10-21T09:27:17.517Z - success: ui-tree loaded
+2019-10-21T09:27:17.522Z - success: vivo-runtime loaded
+2019-10-21T09:27:17.523Z - success: weapp-adapter loaded
+2019-10-21T09:27:17.523Z - success: xiaomi-adapter loaded
+2019-10-21T09:27:17.562Z - success: assets loaded
+2019-10-21T09:27:17.564Z - success: builder loaded
+2019-10-21T09:27:17.805Z - success: cocos-services loaded
+2019-10-21T09:27:17.809Z - success: console loaded
+2019-10-21T09:27:17.837Z - success: fb-instant-games loaded
+2019-10-21T09:27:17.838Z - success: google-instant-games loaded
+2019-10-21T09:27:17.843Z - success: hierarchy loaded
+2019-10-21T09:27:17.845Z - success: inspector loaded
+2019-10-21T09:27:17.846Z - success: keystore loaded
+2019-10-21T09:27:17.849Z - success: node-library loaded
+2019-10-21T09:27:17.850Z - success: package-asset loaded
+2019-10-21T09:27:17.851Z - success: preferences loaded
+2019-10-21T09:27:17.852Z - success: project-exporter loaded
+2019-10-21T09:27:17.854Z - success: project-importer loaded
+2019-10-21T09:27:17.855Z - success: project-settings loaded
+2019-10-21T09:27:17.861Z - success: scene loaded
+2019-10-21T09:27:17.862Z - success: simulator-debugger loaded
+2019-10-21T09:27:17.864Z - success: sprite-editor loaded
+2019-10-21T09:27:17.867Z - success: store loaded
+2019-10-21T09:27:17.870Z - success: timeline loaded
+2019-10-21T09:27:17.875Z - success: xiaomi-runtime loaded
+2019-10-21T09:27:17.876Z - success: bitmap-font loaded
+2019-10-21T09:27:17.878Z - success: font-slimming-tools loaded
+2019-10-21T09:27:18.133Z - success: unpack-textureatlas loaded
+2019-10-21T09:27:19.487Z - normal: Loading packages
+2019-10-21T09:27:19.499Z - normal: Watching packages
+2019-10-21T09:27:19.667Z - info: Cocos Services load base data!
+2019-10-21T09:27:19.898Z - normal: Run Application
+2019-10-21T13:39:31.872Z - warn: The SpriteFrame used by component "cc.Button" is missing. Detailed information:
+Node path: "Canvas/New Button"
+Missing uuid: "e9ec654c-97a2-4787-9325-e6a10375219a"
+

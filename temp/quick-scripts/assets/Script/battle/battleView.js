@@ -32,6 +32,7 @@ var battleView = /** @class */ (function (_super) {
         _this.bossPre = null;
         _this.bulletPre = null;
         _this.collisionLayer = null;
+        _this.gameEndPre = null;
         /**角色运动类型 */
         _this.actionType = gameProtocol_1.gameProtocol.playerControl.actionType.inTheAir;
         // @property(cc.Prefab)
@@ -46,6 +47,7 @@ var battleView = /** @class */ (function (_super) {
         _this._actionType = null;
         _this.bulletPool = null;
         _this.maxBulletCount = 3;
+        _this.closeTip = false;
         return _this;
     }
     battleView.prototype.onLoad = function () {
@@ -62,15 +64,22 @@ var battleView = /** @class */ (function (_super) {
     battleView.prototype.initEvent = function () {
         cc.systemEvent.on(gameProtocol_1.gameProtocol.event.playerShooting, this.playerShoot, this);
         cc.systemEvent.on(gameProtocol_1.gameProtocol.event.bossShooting, this.bossShoot, this);
+        cc.systemEvent.on(gameProtocol_1.gameProtocol.event.reduceHealth, this.onReduceHealth, this);
+        cc.systemEvent.on(gameProtocol_1.gameProtocol.event.leaveGame, this.closeGame, this);
+        cc.systemEvent.on(gameProtocol_1.gameProtocol.event.resurrection, this.onResurrection, this);
     };
     battleView.prototype.clearEvent = function () {
         cc.systemEvent.off(gameProtocol_1.gameProtocol.event.playerShooting, this.playerShoot, this);
         cc.systemEvent.off(gameProtocol_1.gameProtocol.event.bossShooting, this.bossShoot, this);
+        cc.systemEvent.off(gameProtocol_1.gameProtocol.event.reduceHealth, this.onReduceHealth, this);
+        cc.systemEvent.off(gameProtocol_1.gameProtocol.event.leaveGame, this.closeGame, this);
+        cc.systemEvent.off(gameProtocol_1.gameProtocol.event.resurrection, this.onResurrection, this);
     };
     battleView.prototype.initBtnControl = function () {
         cc.find('operationMenu', this.node).getComponent('gameKeyControl').playerControl = this.playerNode.getComponent('playerControl');
     };
     battleView.prototype.initPlayer = function () {
+        var _this = this;
         this.playerNode = cc.instantiate(this.PlayerPre);
         //this.playerNode.getComponent(sp.SkeletonData);
         this.playerNode.parent = this.collisionLayer;
@@ -79,18 +88,23 @@ var battleView = /** @class */ (function (_super) {
         this.collisionLayer.getComponent('collisionDetection').initPlayer();
         cc.log(this.playerNode.getPosition());
         var path = gameRes_1.playerRes[this.roleAniName].aniPath;
-        var self = this;
         cc.loader.loadRes(path, sp.SkeletonData, function (err, _SkeletonData) {
             if (err) {
                 cc.error(err.message || err);
                 return;
             }
             else {
-                self.playerNode.getComponent(sp.Skeleton).skeletonData = _SkeletonData;
-                self.playerNode.getComponent(sp.Skeleton).setSkin(self.roleWeaponName);
-                self.playerNode.getComponent(sp.Skeleton).setAnimation(0, 'idle', true);
+                _this.playerNode.getComponent(sp.Skeleton).skeletonData = _SkeletonData;
+                _this.playerNode.getComponent(sp.Skeleton).setSkin(_this.roleWeaponName);
+                _this.playerNode.getComponent(sp.Skeleton).setAnimation(0, 'idle', true);
+                _this.followPlayerNode();
             }
         });
+    };
+    //屏幕追踪player
+    battleView.prototype.followPlayerNode = function () {
+        // let follow = cc.follow(this.playerNode, cc.rect(0,0, 2000,2000));
+        // this.node.runAction(follow);
     };
     battleView.prototype.initBoss = function () {
         this.bossNode = cc.instantiate(this.bossPre);
@@ -115,7 +129,8 @@ var battleView = /** @class */ (function (_super) {
     };
     battleView.prototype.showHealthValue = function () {
         var healthNode = cc.find('background/health', this.node);
-        var _iconItem = cc.find('lifeIcon', healthNode);
+        var _iconItem = cc.find('background/lifeIcon', this.node);
+        healthNode.removeAllChildren();
         for (var i = 0; i < this.roleHealthValue; i++) {
             var iconItem = cc.instantiate(_iconItem);
             iconItem.parent = healthNode;
@@ -211,6 +226,36 @@ var battleView = /** @class */ (function (_super) {
             _this.bulletPool.put(bullet);
         })));
     };
+    battleView.prototype.closeGame = function () {
+        // if(!this.closeTip){
+        //     ManagerNotice.getInstance().show("Click again to exit the game!");
+        //     this.closeTip=true;
+        //     this.schedule(()=>{
+        //         this.closeTip=false;
+        //     },3);
+        //     return
+        // }
+        GameInfo_1.default.getInstance().closeGame();
+        GameInfo_1.default.getInstance().justLeftGame();
+        cc.director.loadScene('home');
+    };
+    battleView.prototype.onReduceHealth = function () {
+        this.roleHealthValue = GameInfo_1.default.getInstance().reduceHealth();
+        this.showHealthValue();
+        if (this.roleHealthValue == 0) {
+            //ManagerWindow.getInstance().show(this.gameEndPre);
+            cc.find('mask', this.node).active = true;
+            var gameEndPanel = cc.instantiate(this.gameEndPre);
+            gameEndPanel.parent = cc.find('gameEnd', this.node);
+        }
+    };
+    battleView.prototype.onResurrection = function () {
+        cc.find('mask', this.node).active = false;
+        cc.find('gameEnd', this.node).removeAllChildren();
+        GameInfo_1.default.getInstance().Resurrection();
+        this.roleHealthValue = GameInfo_1.default.getInstance().returnCurrentHealth();
+        this.showHealthValue();
+    };
     __decorate([
         property(cc.Prefab)
     ], battleView.prototype, "PlayerPre", void 0);
@@ -223,6 +268,9 @@ var battleView = /** @class */ (function (_super) {
     __decorate([
         property(cc.Node)
     ], battleView.prototype, "collisionLayer", void 0);
+    __decorate([
+        property(cc.Prefab)
+    ], battleView.prototype, "gameEndPre", void 0);
     __decorate([
         property
     ], battleView.prototype, "actionType", void 0);

@@ -1,4 +1,5 @@
 import {ManagerWindow} from "../module/ManagerWindow"
+import { ManagerNotice } from "../module/ManagerNotice"
 import { gameProtocol } from "../game/gameProtocol"
 import GameInfo from "../module/GameInfo"
 const {ccclass, property} = cc._decorator;
@@ -16,8 +17,15 @@ export default class loginView extends cc.Component {
     // LIFE-CYCLE CALLBACKS:
     private rolePanelNode:any=null;
     onLoad () {
-        this.initEvent()
-         ManagerWindow.getInstance().show(this.signInPanelPre)
+        this.initEvent();
+        cc.log(GameInfo.getInstance().returnjustLeftStatus())
+        if(GameInfo.getInstance().returnjustLeftStatus()){
+            this.showRolePanelPre()
+        }
+        else{
+            ManagerWindow.getInstance().show(this.signInPanelPre)
+        }
+        
     }
 
     onDestroy(){
@@ -38,7 +46,7 @@ export default class loginView extends cc.Component {
     
     start () {
         ManagerWindow.getInstance();
-        //ManagerWindow.getInstance().init(this.windowManagerNode)
+        ManagerNotice.getInstance();
     }
 
     showRolePanelPre(){

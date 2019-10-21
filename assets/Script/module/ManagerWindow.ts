@@ -23,15 +23,15 @@ class ManagerWindow {
        
     }
 
-    clear() {
-        cc.game.removePersistRootNode(this.managerNode)
-        this.clearEvent()
-        ManagerWindow.m_instance = null
-    }
+    // clear() {
+    //     cc.game.removePersistRootNode(this.managerNode)
+    //     this.clearEvent()
+    //     ManagerWindow.m_instance = null
+    // }
 
     static getInstance(): ManagerWindow {
         if (!ManagerWindow.m_instance)
-            ManagerWindow.m_instance = new ManagerWindow()
+            ManagerWindow.m_instance = new ManagerWindow();
         return ManagerWindow.m_instance;
     }
 

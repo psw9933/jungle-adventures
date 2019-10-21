@@ -1,5 +1,6 @@
 import {gameProtocol} from "../game/gameProtocol"
 import { playerRes } from "../game/gameRes"
+import { ManagerWindow } from "../module/ManagerWindow"
 const {ccclass, property} = cc._decorator;
 import GameInfo from "../module/GameInfo"
 
@@ -18,6 +19,9 @@ export default class battleView extends cc.Component {
 
     @property(cc.Node)
     collisionLayer:cc.Node=null;
+
+    @property(cc.Prefab)
+    gameEndPre:cc.Prefab=null;
 
     /**角色运动类型 */
     @property
@@ -47,21 +51,26 @@ export default class battleView extends cc.Component {
 
         this.initBtnControl();
         
-        this.initBulletPool()
+        this.initBulletPool();
     }
 
     onDestroy(){
         this.clearEvent()
     }
-
     private initEvent() {
         cc.systemEvent.on(gameProtocol.event.playerShooting, this.playerShoot, this);
         cc.systemEvent.on(gameProtocol.event.bossShooting, this.bossShoot, this);
+        cc.systemEvent.on(gameProtocol.event.reduceHealth, this.onReduceHealth, this);
+        cc.systemEvent.on(gameProtocol.event.leaveGame, this.closeGame, this);
+        cc.systemEvent.on(gameProtocol.event.resurrection, this.onResurrection, this);
     }
 
     private clearEvent() {
         cc.systemEvent.off(gameProtocol.event.playerShooting, this.playerShoot, this);
         cc.systemEvent.off(gameProtocol.event.bossShooting, this.bossShoot, this);
+        cc.systemEvent.off(gameProtocol.event.reduceHealth, this.onReduceHealth, this);
+        cc.systemEvent.off(gameProtocol.event.leaveGame, this.closeGame, this);
+        cc.systemEvent.off(gameProtocol.event.resurrection, this.onResurrection, this);
     }
 
     initBtnControl(){
@@ -79,21 +88,27 @@ export default class battleView extends cc.Component {
         cc.log(this.playerNode.getPosition())
 
         let path = playerRes[this.roleAniName].aniPath;
-        let self = this;
-        cc.loader.loadRes(path, sp.SkeletonData, function (err, _SkeletonData) {
+        cc.loader.loadRes(path, sp.SkeletonData,  (err, _SkeletonData)=> {
             if (err) {
                 cc.error(err.message || err);
                 return;
             }
             else {
                 
-                self.playerNode.getComponent(sp.Skeleton).skeletonData = _SkeletonData;
-                self.playerNode.getComponent(sp.Skeleton).setSkin(self.roleWeaponName);
-                self.playerNode.getComponent(sp.Skeleton).setAnimation(0, 'idle', true);
+                this.playerNode.getComponent(sp.Skeleton).skeletonData = _SkeletonData;
+                this.playerNode.getComponent(sp.Skeleton).setSkin(this.roleWeaponName);
+                this.playerNode.getComponent(sp.Skeleton).setAnimation(0, 'idle', true);
+
+                this.followPlayerNode()
             }
         });
     }
 
+    //屏幕追踪player
+    followPlayerNode(){
+        // let follow = cc.follow(this.playerNode, cc.rect(0,0, 2000,2000));
+        // this.node.runAction(follow);
+    }
     initBoss(){
         this.bossNode=cc.instantiate(this.bossPre);
         this.bossNode.parent=this.collisionLayer
@@ -120,8 +135,9 @@ export default class battleView extends cc.Component {
 
     showHealthValue(){
         let healthNode=cc.find('background/health',this.node);
-        let _iconItem=cc.find('lifeIcon',healthNode);
+        let _iconItem=cc.find('background/lifeIcon',this.node);
 
+        healthNode.removeAllChildren();
         for(let i=0;i<this.roleHealthValue;i++){
             let iconItem=cc.instantiate(_iconItem);
             iconItem.parent=healthNode;
@@ -232,5 +248,40 @@ export default class battleView extends cc.Component {
         bullet.runAction(cc.sequence(cc.moveTo(1,to_pos).easing(cc.easeIn(1.0)),cc.callFunc(()=>{
             this.bulletPool.put(bullet);
         })))
+    }
+
+    closeTip:boolean=false;
+    closeGame(){
+        // if(!this.closeTip){
+        //     ManagerNotice.getInstance().show("Click again to exit the game!");
+        //     this.closeTip=true;
+        //     this.schedule(()=>{
+        //         this.closeTip=false;
+        //     },3);
+        //     return
+        // }
+        GameInfo.getInstance().closeGame();
+        GameInfo.getInstance().justLeftGame();
+        cc.director.loadScene('home')
+    }
+
+    onReduceHealth(){
+        this.roleHealthValue=GameInfo.getInstance().reduceHealth();
+        this.showHealthValue();
+        if(this.roleHealthValue==0){
+            //ManagerWindow.getInstance().show(this.gameEndPre);
+            cc.find('mask',this.node).active=true;
+            let gameEndPanel=cc.instantiate(this.gameEndPre);
+            gameEndPanel.parent=cc.find('gameEnd',this.node);
+        }
+    }
+
+    onResurrection(){
+        cc.find('mask',this.node).active=false;
+        cc.find('gameEnd',this.node).removeAllChildren();
+        
+        GameInfo.getInstance().Resurrection();
+        this.roleHealthValue=GameInfo.getInstance().returnCurrentHealth();
+        this.showHealthValue();
     }
 }
